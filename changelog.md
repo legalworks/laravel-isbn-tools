@@ -2,7 +2,7 @@
 
 All notable changes to `legalworks/laravel-isbn-tools` will be documented in this file.
 
-## [Roadmap]
+## Roadmap
 - Getting titleinfo by ISBN.
 - Allow different formatting of ISBN, e.g. using spaces.
 
