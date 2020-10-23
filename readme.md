@@ -2,7 +2,7 @@
 
 [![Latest Version on Packagist][ico-version]][link-packagist]
 [![Total Downloads][ico-downloads]][link-downloads]
-[![Build Status][ico-travis]][link-travis]
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](http://opensource.org/licenses/MIT)
 
 This package allows casting and validation of ISBN in Laravel Eloquent models, usind the [nicebooks/isbn](https://github.com/nicebooks-com/isbn)-package.
 
@@ -56,7 +56,7 @@ If you discover any security related issues, please email author email instead o
 
 ## Credits
 
-- [author name][link-author]
+- [JayAhr][link-author]
 - [All Contributors][link-contributors]
 
 ## License
@@ -68,9 +68,7 @@ license. Please see the [license file](license.md) for more information.
 [ico-travis]: https://img.shields.io/travis/legalworks/laravelisbntools/master.svg?style=flat-square
 [ico-styleci]: https://styleci.io/repos/12345678/shield
 
-[link-packagist]: https://packagist.org/packages/legalworks/laravelisbntools
-[link-downloads]: https://packagist.org/packages/legalworks/laravelisbntools
-[link-travis]: https://travis-ci.org/legalworks/laravelisbntools
-[link-styleci]: https://styleci.io/repos/12345678
+[link-packagist]: https://packagist.org/packages/legalworks/laravel-isbn-tools
+[link-downloads]: https://packagist.org/packages/legalworks/laravel-isbn-tools
 [link-author]: https://github.com/legalworks
 [link-contributors]: ../../contributors
