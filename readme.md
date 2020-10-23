@@ -4,7 +4,7 @@
 [![Total Downloads][ico-downloads]][link-downloads]
 [![Build Status][ico-travis]][link-travis]
 
-This package allows casting and validation of IDBN in Laravel Eloquent models, usind the [nicebooks/isbn](https://github.com/nicebooks-com/isbn)-package.
+This package allows casting and validation of ISBN in Laravel Eloquent models, usind the [nicebooks/isbn](https://github.com/nicebooks-com/isbn)-package.
 
 ## Installation
 
@@ -16,6 +16,8 @@ $ composer require legalworks/laravel-isbn-tools
 
 ## Usage
 
+### Casting
+
 ``` php
 use Legalworks\IsbnTools\IsbnCast;
 
@@ -23,6 +25,17 @@ protected $casts = [
     'isbn' => IsbnCast::class,
 ];
 ```
+
+### Validation
+
+``` php
+use Legalworks\IsbnTools\IsbnValidator;
+
+$request->validate([
+    'isbn' => ['required', 'string', new IsbnValidator],
+]);
+```
+
 ## Change log
 
 Please see the [changelog](changelog.md) for more information on what has changed recently.
