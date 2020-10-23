@@ -63,10 +63,8 @@ If you discover any security related issues, please email author email instead o
 
 license. Please see the [license file](license.md) for more information.
 
-[ico-version]: https://img.shields.io/packagist/v/legalworks/laravelisbntools.svg?style=flat-square
-[ico-downloads]: https://img.shields.io/packagist/dt/legalworks/laravelisbntools.svg?style=flat-square
-[ico-travis]: https://img.shields.io/travis/legalworks/laravelisbntools/master.svg?style=flat-square
-[ico-styleci]: https://styleci.io/repos/12345678/shield
+[ico-version]: https://img.shields.io/packagist/v/legalworks/laravel-isbn-tools.svg?style=flat-square
+[ico-downloads]: https://img.shields.io/packagist/dt/legalworks/laravel-isbn-tools.svg?style=flat-square
 
 [link-packagist]: https://packagist.org/packages/legalworks/laravel-isbn-tools
 [link-downloads]: https://packagist.org/packages/legalworks/laravel-isbn-tools
