@@ -1,10 +1,10 @@
 <?php
 
-namespace Legalworks\LaravelIsbnTools\Facades;
+namespace Legalworks\IsbnTools\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
-class LaravelIsbnTools extends Facade
+class IsbnTools extends Facade
 {
     /**
      * Get the registered name of the component.
@@ -13,6 +13,6 @@ class LaravelIsbnTools extends Facade
      */
     protected static function getFacadeAccessor(): string
     {
-        return 'laravelisbntools';
+        return 'laravel-isbn-tools';
     }
 }
