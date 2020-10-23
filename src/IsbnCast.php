@@ -3,7 +3,7 @@
 namespace Legalworks\IsbnTools;
 
 use Illuminate\Contracts\Database\Eloquent\CastsAttributes;
-use Nicebooks\Isbn\Isbn as IsbnClass;
+use Nicebooks\Isbn\Isbn;
 
 class IsbnCast implements CastsAttributes
 {
@@ -18,7 +18,7 @@ class IsbnCast implements CastsAttributes
      */
     public function get($model, $key, $value, $attributes)
     {
-        return IsbnClass::of($value)->format();
+        return Isbn::of($value)->format();
     }
 
     /**
@@ -32,6 +32,6 @@ class IsbnCast implements CastsAttributes
      */
     public function set($model, $key, $value, $attributes)
     {
-        return IsbnClass::of($value)->format();
+        return Isbn::of($value)->format();
     }
 }
