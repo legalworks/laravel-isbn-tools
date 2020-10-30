@@ -4,13 +4,24 @@ namespace Legalworks\IsbnTools\Clients;
 
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Http;
+use Legalworks\IsbnTools\Sources\DnbSru\Client;
 
-class OpenLibraryClient extends ClientContract
+class DnbSruClient extends ClientContract
 {
-    protected string $base_url = 'https://openlibrary.org/api/';
+    protected $client;
+
+    public function __construct()
+    {
+        $this->client = new Client;
+    }
 
     public function find(string $identifier, string $key = 'ISBN')
     {
+        dd($this->client->first($identifier));
+
+
+        dd($this->client->first('%22Deutsche%20Nationalbibliothek%22'));
+        dd($this->client->first('dnb.isbn="' . $identifier . '"'));
         if ($key === 'ISBN') {
             $identifier = preg_replace('/[^xX0-9]/', '', $identifier);
         }

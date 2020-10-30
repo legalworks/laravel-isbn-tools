@@ -2,7 +2,7 @@
 
 namespace Legalworks\IsbnTools\Clients;
 
-use Scriptotek\Sru\Client as SruClient;
+use Legalworks\IsbnTools\Sources\Exlibris\Client;
 
 class ExlibrisClient extends ClientContract
 {
@@ -12,15 +12,13 @@ class ExlibrisClient extends ClientContract
 
     public function __construct()
     {
-        $this->client = new SruClient($this->base_url, [
-            'schema' => 'marcxml',
-            'version' => '1.2',
-            'user-agent' => 'MyTool/0.1',
-        ]);
+        $this->client = new Client;
     }
 
     public function find(string $identifier, string $key = 'isbn')
     {
+        dd($this->client->first($identifier));
+
         if ($key === 'isbn') {
             $identifier = preg_replace('/[^xX0-9]/', '', $identifier);
         }

@@ -4,29 +4,20 @@ namespace Legalworks\IsbnTools\Clients;
 
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Http;
+use Legalworks\IsbnTools\Sources\BeckShop\Client;
 
-class OpenLibraryClient extends ClientContract
+class BeckShopClient extends ClientContract
 {
-    protected string $base_url = 'https://openlibrary.org/api/';
+    protected $client;
+
+    public function __construct()
+    {
+        $this->client = new Client;
+    }
 
     public function find(string $identifier, string $key = 'ISBN')
     {
-        if ($key === 'ISBN') {
-            $identifier = preg_replace('/[^xX0-9]/', '', $identifier);
-        }
-
-        $url = sprintf("{$this->base_url}books?bibkeys=%s:%s&jscmd=details&format=json", $key, $identifier);
-
-        $response = Http::get($url);
-
-        $items = collect($response->json())
-            ->values()
-            ->map(fn ($item) => self::map($item));
-        dd($items, $response->json());
-        // foreach($response->json()->first);
-        dd(self::map($response->json()));
-
-        dd($response->body()[0]);
+        dd($this->client->search('Palandt'));
     }
 
     protected static function map(array $item)

@@ -3,6 +3,7 @@
 namespace Legalworks\IsbnTools;
 
 use Illuminate\Support\ServiceProvider;
+use Legalworks\IsbnTools\Services\BookDataManager;
 
 class IsbnToolsServiceProvider extends ServiceProvider
 {
@@ -31,11 +32,15 @@ class IsbnToolsServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->mergeConfigFrom(__DIR__ . '/../config/legalworks-isbntools.php', 'isbntools');
+        $this->mergeConfigFrom(__DIR__ . '/../config/legalworks-isbntools.php', 'legalworks-isbntools');
 
         // Register the service the package provides.
         $this->app->singleton('laravel-isbn-tools', function ($app) {
             return new IsbnTools;
+        });
+
+        $this->app->singleton('book-api', function ($app) {
+            return new BookDataManager($app);
         });
     }
 
@@ -46,7 +51,7 @@ class IsbnToolsServiceProvider extends ServiceProvider
      */
     public function provides()
     {
-        return ['laravel-isbn-tools'];
+        return ['laravel-isbn-tools', 'book-api'];
     }
 
     /**
@@ -58,8 +63,8 @@ class IsbnToolsServiceProvider extends ServiceProvider
     {
         // Publishing the configuration file.
         $this->publishes([
-            __DIR__ . '/../config/laravelisbntools.php' => config_path('laravelisbntools.php'),
-        ], 'laravelisbntools.config');
+            __DIR__ . '/../config/legalworks-isbntools.php' => config_path('legalworks-isbntools.php'),
+        ], 'laravel-isbn-tools.config');
 
         // Publishing the views.
         /*$this->publishes([
