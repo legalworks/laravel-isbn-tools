@@ -2,12 +2,11 @@
 
 namespace Legalworks\IsbnTools\Tests\Feature;
 
-use Orchestra\Testbench\TestCase;
 use Legalworks\IsbnTools\IsbnValidator;
+use Orchestra\Testbench\TestCase;
 
 class ValidatorTest extends TestCase
 {
-
     /** @test */
     public function it_validates_isbn()
     {

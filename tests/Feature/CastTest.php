@@ -7,7 +7,6 @@ use Orchestra\Testbench\TestCase;
 
 class CastTest extends TestCase
 {
-
     /** @test */
     public function it_casts_isbn()
     {
