@@ -12,8 +12,11 @@
     "homepage": "https://github.com/legalworks/laravel-isbn-tools",
     "keywords": ["Laravel", "ISBN"],
     "require": {
+        "atrox/matcher": "^1.1",
         "illuminate/support": "~7|~8",
-        "nicebooks/isbn": "^0.2"
+        "nicebooks/isbn": "^0.2",
+        "scriptotek/marc": "^2.2",
+        "scriptotek/google-books": "^0.2"
     },
     "require-dev": {
         "phpunit/phpunit": "~9.0",
@@ -35,7 +38,8 @@
                 "Legalworks\\IsbnTools\\IsbnToolsServiceProvider"
             ],
             "aliases": {
-                "Legalrocks\\IsbnTools": "Legalworks\\IsbnTools\\Facades\\IsbnTools"
+                "Isbn": "Legalworks\\IsbnTools\\Facades\\Isbn",
+                "BookData": "Legalworks\\IsbnTools\\Facades\\BookData"
             }
         }
     }
