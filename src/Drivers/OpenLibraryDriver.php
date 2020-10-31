@@ -2,6 +2,7 @@
 
 namespace Legalworks\IsbnTools\Drivers;
 
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Http;
 use Legalworks\IsbnTools\Contracts\BookApiContract;
 use Legalworks\IsbnTools\Sources\BeckShop\Client;
@@ -35,5 +36,21 @@ class BeckShopDriver implements BookApiContract
 
         return collect($items)
             ->map(fn ($item) => $this->client->details($item['id']));
+    }
+
+    protected static function map(array $item)
+    {
+        $item = collect($item);
+        return [
+            'title' => $item['details']['title'],
+            'subtitle' => $item['details']['subtitle'],
+            'authors' => $item['details']['authors'],
+            'publishers' => $item['details']['publishers'],
+            'publish_date' => new Carbon($item['details']['publish_date']),
+            'physical_format' => $item['details']['physical_format'],
+            'number_of_pages' => $item['details']['number_of_pages'],
+            'cover' => "https://covers.openlibrary.org/b/id/{$item['details']['covers'][0]}-L.jpg",
+            'key' => trim($item['details']['key'], '/'),
+        ];
     }
 }

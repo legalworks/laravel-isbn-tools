@@ -13,6 +13,6 @@ class IsbnTools extends Facade
      */
     protected static function getFacadeAccessor(): string
     {
-        return 'laravel-isbn-tools';
+        return 'isbn-tools';
     }
 }

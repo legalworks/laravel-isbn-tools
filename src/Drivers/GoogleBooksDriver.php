@@ -6,11 +6,11 @@ use Legalworks\IsbnTools\Contracts\BookApiContract;
 
 class GoogleBooksDriver implements BookApiContract
 {
-    protected Client $client;
+    // protected Client $client;
 
     public function __construct()
     {
-        $this->client = new ;
+        // $this->client = new ;
     }
 
     public function find(string $identifier)

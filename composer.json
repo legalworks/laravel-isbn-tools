@@ -38,7 +38,7 @@
                 "Legalworks\\IsbnTools\\IsbnToolsServiceProvider"
             ],
             "aliases": {
-                "Isbn": "Legalworks\\IsbnTools\\Facades\\Isbn",
+                "IsbnTools": "Legalworks\\IsbnTools\\Facades\\IsbnTools",
                 "BookData": "Legalworks\\IsbnTools\\Facades\\BookData"
             }
         }

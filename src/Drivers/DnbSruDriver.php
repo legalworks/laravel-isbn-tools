@@ -2,18 +2,21 @@
 
 namespace Legalworks\IsbnTools\Drivers;
 
-use Illuminate\Support\Facades\Http;
+use Legalworks\IsbnTools\Clients\SruClient;
 use Legalworks\IsbnTools\Contracts\BookApiContract;
 use Legalworks\IsbnTools\Sources\BeckShop\Client;
 
-class BeckShopDriver implements BookApiContract
+class DnbSruDriver implements BookApiContract
 {
-    protected Http $client;
+    protected SruClient $client;
 
     public function __construct()
     {
-        $this->client = Http::withOptions([
-            'base_uri' => 'https://www.beck-shop.de',
+        $this->client = new SruClient([
+            'base_uri' => config('legalworks-isbntools.clients.DnbSru.url'),
+            'query' => [
+                'accessToken' => config('legalworks-isbntools.clients.DnbSru.token'),
+            ],
         ]);
     }
 
@@ -22,7 +25,7 @@ class BeckShopDriver implements BookApiContract
         return $this->client->getItem($identifier);
     }
 
-    public function first(string $query, string $key = 'isbn')
+    public function first(string $query)
     {
         $item = collect($this->client->search($query))->first();
 

@@ -13,6 +13,6 @@ class BookData extends Facade
      */
     protected static function getFacadeAccessor(): string
     {
-        return 'book-data';
+        return 'book-datas';
     }
 }
