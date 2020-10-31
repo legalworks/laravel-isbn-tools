@@ -38,9 +38,6 @@ class IsbnToolsServiceProvider extends ServiceProvider
         $this->app->singleton('isbn-tools', function ($app) {
             return new IsbnTools;
         });
-        $this->app->singleton('book-data', function ($app) {
-            return new BookDataManager($app);
-        });
     }
 
     /**
@@ -50,7 +47,7 @@ class IsbnToolsServiceProvider extends ServiceProvider
      */
     public function provides()
     {
-        return ['isbn-tools', 'book-data'];
+        return ['isbn-tools'];
     }
 
     /**
