@@ -3,7 +3,6 @@
 namespace Legalworks\IsbnTools;
 
 use Illuminate\Support\ServiceProvider;
-use Legalworks\IsbnTools\Services\BookDataManager;
 
 class IsbnToolsServiceProvider extends ServiceProvider
 {
@@ -32,7 +31,7 @@ class IsbnToolsServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->mergeConfigFrom(__DIR__ . '/../config/legalworks-isbntools.php', 'isbntools');
+        $this->mergeConfigFrom(__DIR__.'/../config/legalworks-isbntools.php', 'isbntools');
 
         // Register the service the package provides.
         $this->app->singleton('isbn-tools', function ($app) {
@@ -59,7 +58,7 @@ class IsbnToolsServiceProvider extends ServiceProvider
     {
         // Publishing the configuration file.
         $this->publishes([
-            __DIR__ . '/../config/legalworks-isbntools.php' => config_path('legalworks-isbntools.php'),
+            __DIR__.'/../config/legalworks-isbntools.php' => config_path('legalworks-isbntools.php'),
         ], 'legalworks-isbntools.config');
 
         // Publishing the views.

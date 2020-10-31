@@ -22,7 +22,6 @@ class Isbn
 
     public function linkTo(string $service, string $style = null): string
     {
-
         return sprintf(
             '<a href="https://google.com/search?q=%s">%s</a>',
             $this->isbn,
@@ -56,7 +55,7 @@ class Isbn
 
     public function equates($otherIsbn): bool
     {
-        if (!$otherIsbn instanceof NicebooksIsbn) {
+        if (! $otherIsbn instanceof NicebooksIsbn) {
             $otherIsbn = NicebooksIsbn::of($otherIsbn);
         }
 
