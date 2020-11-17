@@ -3,7 +3,6 @@
 namespace Legalworks\IsbnTools;
 
 use Illuminate\Contracts\Database\Eloquent\CastsAttributes;
-use Nicebooks\Isbn\Isbn;
 
 class IsbnCast implements CastsAttributes
 {
@@ -32,6 +31,6 @@ class IsbnCast implements CastsAttributes
      */
     public function set($model, $key, $value, $attributes)
     {
-        return Isbn::of($value)->format();
+        return Isbn::of($value)->to13()->isbn;
     }
 }

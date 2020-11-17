@@ -14,7 +14,6 @@ class CastTest extends TestCase
 
         $model->isbn = '9783-8006-5637-0';
 
-        dd($model);
         $this->assertTrue($model->isbn === '978-3-8006-5637-0');
 
         // check in DB
