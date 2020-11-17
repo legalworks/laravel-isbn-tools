@@ -2,17 +2,24 @@
 
 namespace Legalworks\IsbnTools;
 
+use Nicebooks\Isbn\Internal\RangeInfo;
+use Nicebooks\Isbn\Internal\RangeService;
 use Nicebooks\Isbn\Isbn as NicebooksIsbn;
 
-class Isbn
+class Isbn extends NicebooksIsbn
 {
-    protected NicebooksIsbn $isbn;
+    protected string $isbn;
+    protected bool $is13;
+    protected RangeInfo $rangeInfo;
 
     protected string $divider = '-';
 
-    public function __construct($isbn)
+    public function __construct(string $isbn)
     {
-        $this->isbn = NicebooksIsbn::of($isbn);
+        $this->isbn = $isbn;
+        $this->is13 = NicebooksIsbn::of($this->isbn)->is13();
+
+        $this->rangeInfo = RangeService::getRangeInfo($isbn);
     }
 
     public static function of($isbn): self
@@ -38,32 +45,12 @@ class Isbn
 
     public function format($divider = null): string
     {
-        $divider = $divider ?? $this->divider;
-
-        return implode($divider, $this->isbn->getParts());
-    }
-
-    public function to13(): string
-    {
-        return $this->isbn->to13();
-    }
-
-    public function to10(): NicebooksIsbn
-    {
-        return $this->isbn->to10();
-    }
-
-    public function equates($otherIsbn): bool
-    {
-        if (! $otherIsbn instanceof NicebooksIsbn) {
-            $otherIsbn = NicebooksIsbn::of($otherIsbn);
+        if ($this->rangeInfo === null || $this->rangeInfo->parts === null) {
+            return $this->isbn;
         }
 
-        return $this->isbn->to13() == $otherIsbn->to13();
-    }
+        $divider = $divider ?? $this->divider;
 
-    public function __toString(): string
-    {
-        return $this->isbn;
+        return implode($divider, $this->getParts());
     }
 }
